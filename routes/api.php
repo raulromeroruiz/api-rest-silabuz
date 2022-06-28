@@ -20,4 +20,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::post('/register', 'AuthController@register');
 Route::post('/login',    'AuthController@login');
-Route::get('/logout',   'AuthController@logout')->middleware('auth:api');
+Route::post('/logout',   'AuthController@logout')->middleware('auth:sanctum');
+
+Route::apiResource('v1/artist', api\v1\ArtistController::class)->middleware('api');
