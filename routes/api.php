@@ -24,3 +24,4 @@ Route::post('/logout',   'AuthController@logout')->middleware('auth:sanctum');
 
 Route::apiResource('v1/artist', api\v1\ArtistController::class)->middleware('api');
 Route::apiResource('v1/album', api\v1\AlbumController::class)->middleware('api');
+Route::apiResource('v1/search', api\v1\SearchController::class)->middleware('api');
