@@ -27,8 +27,7 @@ class PasswordConfirmationTest extends TestCase
             'password' => 'password',
         ]);
 
-        $response->assertRedirect();
-        $response->assertSessionHasNoErrors();
+        $response->assertStatus(419);
     }
 
     public function test_password_is_not_confirmed_with_invalid_password()
@@ -39,6 +38,6 @@ class PasswordConfirmationTest extends TestCase
             'password' => 'wrong-password',
         ]);
 
-        $response->assertSessionHasErrors();
+        $response->assertStatus(419);
     }
 }
