@@ -26,7 +26,7 @@ class AlbumTest extends TestCase
     public function test_get_album()
     {
         $album_id = $this->faker->numberBetween(1, 250);
-        $response = $this->get('/api/v1/album/' . $album_id);
+        $response = $this->get(sprintf("%s%s", '/api/v1/album/', $album_id));
 
         $response->assertStatus(200);
     }

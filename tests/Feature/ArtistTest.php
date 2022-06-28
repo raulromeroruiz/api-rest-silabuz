@@ -25,8 +25,8 @@ class ArtistTest extends TestCase
 
     public function test_get_artist()
     {
-        $artist_id = $this->faker->numberBetween(1, 10);
-        $response = $this->get('/api/v1/artist/' . $artist_id);
+        $artist_id = $this->faker->numberBetween(1, 50);
+        $response = $this->get(sprintf("%s%s", '/api/v1/artist/', $artist_id));
 
         $response->assertStatus(200);
     }
