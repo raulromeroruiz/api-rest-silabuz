@@ -64,6 +64,27 @@ class AuthController extends Controller
     }
 
     /**
+     * Login a new user.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function login(Request $request)
+    {
+        if (!Auth::attempt($request->only('email', 'password'))) {
+            return response()->json([
+                'message' => 'Invalid login details'
+            ], 401);
+        }
+        $user = User::where('email', $request['email'])->firstOrFail();
+        $token = $user->createToken('auth_token')->plainTextToken;
+        return response()->json([
+            'access_token' => $token,
+            'token_type' => 'Bearer',
+        ]);
+    }
+
+    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
