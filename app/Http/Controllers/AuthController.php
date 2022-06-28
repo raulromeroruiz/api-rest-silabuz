@@ -85,6 +85,19 @@ class AuthController extends Controller
     }
 
     /**
+     * Logout.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function logout()
+    {
+        Auth::logout();
+        return response()->json([
+            'message' => "Successful logout",
+        ]);
+    }
+
+    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
